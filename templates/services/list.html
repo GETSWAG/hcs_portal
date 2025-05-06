@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Услуги ЖКХ - Портал ЖКХ{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Категории услуг</h5>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="{% url 'services:list' %}" 
+                   class="list-group-item list-group-item-action {% if not current_category %}active{% endif %}">
+                    Все категории
+                </a>
+                {% for category in categories %}
+                    <a href="{% url 'services:list_by_category' category.id %}" 
+                       class="list-group-item list-group-item-action {% if current_category and current_category.id == category.id %}active{% endif %}">
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-9">
+        <div class="row">
+            {% for service in services %}
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ service.name }}</h5>
+                            <p class="card-text">{{ service.description|truncatewords:30 }}</p>
+                            <a href="{% url 'services:detail' service.id %}" class="btn btn-primary">
+                                Подробнее
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-info">
+                        В выбранной категории пока нет доступных услуг.
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ ticket.title }} - Портал ЖКХ{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Основная информация о заявке -->
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Заявка #{{ ticket.id }}: {{ ticket.title }}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h5>Описание</h5>
+                        <p>{{ ticket.description|linebreaks }}</p>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h5>Статус</h5>
+                            <span class="badge {% if ticket.status == 'new' %}bg-primary
+                                         {% elif ticket.status == 'in_progress' %}bg-warning
+                                         {% elif ticket.status == 'resolved' %}bg-success
+                                         {% else %}bg-secondary{% endif %}">
+                                {{ ticket.get_status_display }}
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Приоритет</h5>
+                            <span class="badge {% if ticket.priority == 'low' %}bg-success
+                                         {% elif ticket.priority == 'medium' %}bg-warning
+                                         {% elif ticket.priority == 'high' %}bg-danger
+                                         {% else %}bg-dark{% endif %}">
+                                {{ ticket.get_priority_display }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h5>Услуга</h5>
+                            <p>{{ ticket.service.name }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Дата создания</h5>
+                            <p>{{ ticket.created_at|date:"d.m.Y H:i" }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Комментарии -->
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Комментарии</h4>
+                </div>
+                <div class="card-body">
+                    {% if comments %}
+                        {% for comment in comments %}
+                            <div class="comment mb-3 pb-3 border-bottom">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="mb-0">{{ comment.user.username }}</h6>
+                                    <small class="text-muted">{{ comment.created_at|date:"d.m.Y H:i" }}</small>
+                                </div>
+                                <p class="mb-0">{{ comment.content|linebreaks }}</p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-center">Комментариев пока нет</p>
+                    {% endif %}
+
+                    <!-- Форма добавления комментария -->
+                    <div class="mt-4">
+                        <h5>Добавить комментарий</h5>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Боковая панель -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Информация</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Автор:</strong> {{ ticket.user.username }}</p>
+                    <p><strong>Последнее обновление:</strong> {{ ticket.updated_at|date:"d.m.Y H:i" }}</p>
+                    <a href="{% url 'tickets:list' %}" class="btn btn-secondary w-100">Вернуться к списку заявок</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
