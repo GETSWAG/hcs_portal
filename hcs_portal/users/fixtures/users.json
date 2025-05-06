@@ -1,0 +1,18 @@
+[
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$testpass123$testpass123",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user1",
+      "first_name": "Test",
+      "last_name": "User",
+      "email": "user1@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-05-06T12:00:00Z"
+    }
+  }
+] 

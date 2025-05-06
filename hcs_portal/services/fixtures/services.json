@@ -1,0 +1,62 @@
+[
+  {
+    "model": "services.service",
+    "pk": 1,
+    "fields": {
+      "name": "Протечка крана",
+      "description": "Ремонт и замена сантехнического оборудования",
+      "category": 1,
+      "status": "active",
+      "created_at": "2024-05-06T12:00:00Z",
+      "updated_at": "2024-05-06T12:00:00Z"
+    }
+  },
+  {
+    "model": "services.service",
+    "pk": 2,
+    "fields": {
+      "name": "Замена счетчика",
+      "description": "Установка и замена приборов учета воды",
+      "category": 1,
+      "status": "active",
+      "created_at": "2024-05-06T12:00:00Z",
+      "updated_at": "2024-05-06T12:00:00Z"
+    }
+  },
+  {
+    "model": "services.service",
+    "pk": 3,
+    "fields": {
+      "name": "Неисправность розетки",
+      "description": "Ремонт и замена электрооборудования",
+      "category": 2,
+      "status": "active",
+      "created_at": "2024-05-06T12:00:00Z",
+      "updated_at": "2024-05-06T12:00:00Z"
+    }
+  },
+  {
+    "model": "services.service",
+    "pk": 4,
+    "fields": {
+      "name": "Холодные батареи",
+      "description": "Проверка и ремонт системы отопления",
+      "category": 3,
+      "status": "active",
+      "created_at": "2024-05-06T12:00:00Z",
+      "updated_at": "2024-05-06T12:00:00Z"
+    }
+  },
+  {
+    "model": "services.service",
+    "pk": 5,
+    "fields": {
+      "name": "Уборка подъезда",
+      "description": "Заявка на уборку мест общего пользования",
+      "category": 4,
+      "status": "active",
+      "created_at": "2024-05-06T12:00:00Z",
+      "updated_at": "2024-05-06T12:00:00Z"
+    }
+  }
+] 

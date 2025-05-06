@@ -1,0 +1,44 @@
+[
+  {
+    "model": "tickets.ticket",
+    "pk": 1,
+    "fields": {
+      "title": "Протечка в ванной",
+      "description": "В ванной комнате протекает кран, вода капает на пол",
+      "user": 2,
+      "service": 1,
+      "status": "new",
+      "priority": "high",
+      "created_at": "2024-05-06T12:00:00Z",
+      "updated_at": "2024-05-06T12:00:00Z"
+    }
+  },
+  {
+    "model": "tickets.ticket",
+    "pk": 2,
+    "fields": {
+      "title": "Замена счетчика воды",
+      "description": "Необходима замена счетчика холодной воды, срок поверки истек",
+      "user": 2,
+      "service": 2,
+      "status": "in_progress",
+      "priority": "medium",
+      "created_at": "2024-05-06T12:00:00Z",
+      "updated_at": "2024-05-06T12:00:00Z"
+    }
+  },
+  {
+    "model": "tickets.ticket",
+    "pk": 3,
+    "fields": {
+      "title": "Искрит розетка",
+      "description": "В кухне искрит розетка при включении электроприборов",
+      "user": 2,
+      "service": 3,
+      "status": "new",
+      "priority": "urgent",
+      "created_at": "2024-05-06T12:00:00Z",
+      "updated_at": "2024-05-06T12:00:00Z"
+    }
+  }
+] 
