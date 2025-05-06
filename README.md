@@ -46,17 +46,22 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. Примените миграции:
+4. Перейдите в директорию проекта:
+```bash
+cd hcs_portal
+```
+
+5. Примените миграции:
 ```bash
 python manage.py migrate
 ```
 
-5. Создайте суперпользователя:
+6. Создайте суперпользователя:
 ```bash
 python manage.py createsuperuser
 ```
 
-6. Загрузите тестовые данные (опционально):
+7. Загрузите тестовые данные (опционально):
 ```bash
 python manage.py load_test_data
 ```
@@ -89,7 +94,7 @@ python manage.py load_test_data
 - Собрание жильцов
 - Проверка пожарной безопасности
 
-7. Запустите сервер разработки:
+8. Запустите сервер разработки:
 ```bash
 python manage.py runserver
 ```
